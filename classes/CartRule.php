@@ -234,7 +234,7 @@ class CartRuleCore extends ObjectModel
 		// Remove cart rule that does not match the customer groups
 		$customerGroups = Customer::getGroupsStatic($id_customer);
 		foreach ($result as $key => $cart_rule)
-			if ($cart_rule['group_restriction'])
+			if ($cart_rule['group_restriction'] != 0)
 			{
 				$cartRuleGroups = Db::getInstance()->executeS('SELECT id_group FROM '._DB_PREFIX_.'cart_rule_group WHERE id_cart_rule = '.(int)$cart_rule['id_cart_rule']);
 				foreach ($cartRuleGroups as $cartRuleGroup)
